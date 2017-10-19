@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const { devtool, rules, plugins } = require('web-dev-starter');
+const { devtool, rules, plugins } = require('../..');
 
 const entry = {
   vendor: ['babel-polyfill'],
