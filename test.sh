@@ -6,10 +6,12 @@ NOK_COLOR="\033[31;01m"
 
 error_exit() {
   echo -e "${NOK_COLOR}ERROR:  ${@}${NO_COLOR}"
+
+  exit -1
 }
 
 ok() {
-  echo -e "${@}...${OK_COLOR}OK${NO_COLOR}"
+  echo -e " + ${@}...${OK_COLOR}OK${NO_COLOR}"
 }
 
 t() {
@@ -20,16 +22,21 @@ t() {
   fi
 }
 
+banner() {
+  echo -e "\n\n=== ${@}\n\n"
+}
+
 normal_prod() {
   cd examples/normal
   # install deps if not
   [ ! -d node_modules ] && yarn
   # build
-  yarn build
+  [ ! -f public/assets/app.bundle.js ] && yarn build
 
   cd public/assets
   #
-  echo -e "\n\n\n=====\n\n\n"
+
+  banner "testing"
 
   c=$(cat app.bundle.js | wc -c)
   [ $c -gt 20 -a $c -lt 500 ]
@@ -51,6 +58,11 @@ normal_prod() {
   cat style.css | grep "body{color:red}body{background:#ccc}body{color:blue}._2-VT-_VitVSzLtNzx2PlTz{color:red}" > /dev/null
   t "style.css should be generated correctly"
 
+  # for easy debugging 
+  banner "all files in public/assets"
+  ls -l
+
+  banner "content of style.css"
   cat style.css
 }
 
