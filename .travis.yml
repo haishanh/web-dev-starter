@@ -17,4 +17,5 @@ install:
 before_script:
   - node -v
 script:
-  - yarn test
+  # - yarn test
+  - ./test.sh
