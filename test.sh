@@ -58,7 +58,7 @@ normal_prod() {
   cat style.css | grep "body{color:red}body{background:#ccc}body{color:blue}._2-VT-_VitVSzLtNzx2PlTz{color:red}" > /dev/null
   t "style.css should be generated correctly"
 
-  # for easy debugging 
+  # for easy debugging
   banner "all files in public/assets"
   ls -l
 
