@@ -30,4 +30,5 @@ const config = require(configFile);
 const contentBase = path.resolve(base); // check 
 const options = { config, contentBase, type, port };
 
-if (type === 'normal') require('./webpack/server').run(options);
+// run
+require('./webpack/server').run(options);
