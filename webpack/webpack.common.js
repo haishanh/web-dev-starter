@@ -211,7 +211,7 @@ module.exports.namedModulesPlugin = namedModulesPlugin;
 
 let plugins = [];
 if (isDev) {
-  plugins = [commonsChunkPlugin, namedModulesPlugin];
+  plugins = [namedModulesPlugin];
 } else {
   plugins = [
     commonsChunkPlugin,
